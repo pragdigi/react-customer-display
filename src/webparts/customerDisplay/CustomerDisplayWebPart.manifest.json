@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "85d832c1-7d17-4a24-8557-31da98dc5d78",
+  "alias": "CustomerDisplayWebPart",
+  "componentType": "WebPart",
+
+
+  "version": "*",
+  "manifestVersion": 2,
+
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", 
+    "group": { "default": "Other" },
+    "title": { "default": "CustomerDisplay" },
+    "description": { "default": "Displays Information About Customers from &#39;Customer&#39; list." },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "CustomerDisplay"
+    }
+  }]
+}
