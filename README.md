@@ -1,3 +1,7 @@
 ## React Customer Display
 
-This WebPart displays Customer information when a user clicks the Get Customers button. It uses the SpHtttpClient to get data from the SharePoint REST API.
+This WebPart uses the SpHtttpClient to access the SharePoint REST API. 
+
+It allows the user to Get, Create, Update and Delete Customers by clicking on the appropriate button.
+
+

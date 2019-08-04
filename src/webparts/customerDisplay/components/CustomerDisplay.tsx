@@ -10,10 +10,21 @@ export default class CustomerDisplay extends React.Component<ICustomerDisplayPro
         <div className={ styles.container }>
           <div className={ styles.row }>
           <div className={ styles.column }>
-              <p className={ styles.title }> Customers from list!</p>
+              <p className={ styles.title }> Intract with Customer Items in the Customer List</p>
               <a href="#" className={ styles.button } onClick={ this.onGetListItemsClicked }>
                 <span className={ styles.label }>Get Customers</span>
               </a>
+              
+              <a href="#" className={ styles.button } onClick={ this.onAddListItemClicked }>
+                <span className={ styles.label }>Create Customer</span>
+              </a>
+              <a href="#" className={ styles.button } onClick={ this.onUpdateListItemClicked }>
+                <span className={ styles.label }>Update Customer</span>
+              </a>
+              <a href="#" className={ styles.button } onClick={ this.onDeleteListItemClicked }>
+                <span className={ styles.label }>Delete Customer</span>
+                </a>
+
             </div>
           </div>
 
@@ -37,5 +48,23 @@ export default class CustomerDisplay extends React.Component<ICustomerDisplayPro
     event.preventDefault();
   
     this.props.onGetListItems();
+  }  
+
+  private onAddListItemClicked = (event: React.MouseEvent<HTMLAnchorElement>): void => {
+    event.preventDefault();
+  
+    this.props.onAddListItem();
+  }
+  
+  private onUpdateListItemClicked = (event: React.MouseEvent<HTMLAnchorElement>): void => {
+    event.preventDefault();
+  
+    this.props.onUpdateListItem();
+  }
+  
+  private onDeleteListItemClicked = (event: React.MouseEvent<HTMLAnchorElement>): void => {
+    event.preventDefault();
+  
+    this.props.onDeleteListItem();
   }  
 }
