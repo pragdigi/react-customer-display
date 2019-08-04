@@ -12,10 +12,12 @@ import CustomerDisplay from './components/CustomerDisplay';
 import { ICustomerDisplayProps } from './components/ICustomerDisplayProps';
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 import { ICustomerDisplay } from '../../models';
+import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 
 export interface ICustomerDisplayWebPartProps {
   description: string;
 }
+
 
 export default class CustomerDisplayWebPart extends BaseClientSideWebPart<ICustomerDisplayWebPartProps> {
   private _customers: ICustomerDisplay[] = [];
@@ -39,12 +41,27 @@ export default class CustomerDisplayWebPart extends BaseClientSideWebPart<ICusto
     ReactDom.unmountComponentAtNode(this.domElement);
   }
 
+  private get _isSharePoint(): boolean {
+    return (Environment.type === EnvironmentType.SharePoint || Environment.type === EnvironmentType.ClassicSharePoint);
+  }  
+
   private _onGetListItems = (): void => {
+    if (!this._isSharePoint) {
+      this._customers = [
+        { Id: '1', Title: 'Pragdigi', CellPhone: '', FirstName: ''},
+        { Id: '2', Title: 'Consulting', CellPhone: '', FirstName: '' },
+        { Id: '3', Title: 'Solutions', CellPhone: '', FirstName: '' },
+        { Id: '4', Title: 'Customer WebPart', CellPhone: '', FirstName: '' }
+      ];
+      this.render();
+    }
+    else {
     this._getListItems()
       .then(response => {
         this._customers = response;
         this.render();
       });
+    }
   }  
 
   private _onAddListItem = (): void => {
